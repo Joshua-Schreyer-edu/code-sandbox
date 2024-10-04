@@ -2,22 +2,32 @@
 https://open.kattis.com/problems/attendance2
 """
 
+import sys
+
+def get_input(this_input):
+    if this_input+1 < len(sys.argv):
+        return sys.argv[this_input+1]
+    else:
+        return input()
+
 def main():
-    num_students = int(input())
+    num_students = int(get_input(0))
     absent_students = []
     inputs = []
     for i in range(num_students):
-        inputs.append(input())
+        inputs.append(get_input(i+1))
 
 
     for i in inputs:
         if i != "Present!":
-            if inputs.index(i)+1 < len(inputs):
-                if inputs[inputs.index(i)+1] != "Present!":
-                    absent_students.append(i)
-            # this block of code does not run :(        
-            if inputs.index(i) == len(inputs):
-                absent_students.append(i)
+            if inputs.index(i)+1 <= len(inputs):
+                try:
+                    if inputs[inputs.index(i)+1] != "Present!":
+                        absent_students.append(i)
+                except:
+                    if i != "Present!":
+                        absent_students.append(i)
+
 
     if len(absent_students) == 0:
         print("No Absences")
@@ -28,13 +38,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-"""
-6
-Buckley
-Burnadette
-Present!
-Chad
-Present!
-Erin
-"""
