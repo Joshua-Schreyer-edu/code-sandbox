@@ -1,5 +1,5 @@
 """
-https://open.kattis.com/problems/attendance2
+https://open.kattis.com/problems/dragafra
 """
 
 import sys
@@ -11,29 +11,9 @@ def get_input(this_input):
         return input()
 
 def main():
-    num_students = int(get_input(0))
-    absent_students = []
-    inputs = []
-    for i in range(num_students):
-        inputs.append(get_input(i+1))
-
-
-    for i in inputs:
-        if i != "Present!":
-            if inputs.index(i)+1 <= len(inputs):
-                try:
-                    if inputs[inputs.index(i)+1] != "Present!":
-                        absent_students.append(i)
-                except:
-                    if i != "Present!":
-                        absent_students.append(i)
-
-
-    if len(absent_students) == 0:
-        print("No Absences")
-    else:
-        for i in absent_students:
-            print(i)
+    number1 = int(get_input(0))
+    number2 = int(get_input(1))
+    print(number1 - number2)
 
 
 if __name__ == "__main__":
